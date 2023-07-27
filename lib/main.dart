@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rewardsplus_ecomm/pages/food/popular_food_detail.dart';
-import 'package:rewardsplus_ecomm/pages/home/main_page.dart';
+import 'package:rewardsplus_ecomm/pages/home/ui/main_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -17,6 +17,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: const PopularFoodDetail());
+        home: const MainPage());
   }
 }

@@ -7,7 +7,7 @@ import 'package:rewardsplus_ecomm/widgets/icon_and_text_widget.dart';
 import 'package:rewardsplus_ecomm/widgets/text_widgets.dart';
 import 'package:rewardsplus_ecomm/utils/colors.dart';
 
-import '../../widgets/app_column.dart';
+import '../../../widgets/app_column.dart';
 
 class PageBody extends StatefulWidget {
   const PageBody({super.key});
