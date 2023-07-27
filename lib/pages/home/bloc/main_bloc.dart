@@ -10,14 +10,16 @@ part 'main_event.dart';
 part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
-  MainBloc() : super(MainInitializingState()) {
+  final ItemRepository itemRepository;
+  MainBloc({required this.itemRepository}) : super(MainInitializingState()) {
     on<MainInitialEvent>(mainInitialEvent);
   }
 
   FutureOr<void> mainInitialEvent(MainInitialEvent event, Emitter<MainState> emit) async {
+    print("emitting initializing state");
     emit(MainInitializingState());
-    ItemRepository itemRepo = ItemRepository();
-    List<ItemModel> items = await itemRepo.getItems();
+    List<ItemModel> items = await itemRepository.getItems();
+    print("emitting initialized state");
     emit(MainInitializedState(items: items));
   }
 }

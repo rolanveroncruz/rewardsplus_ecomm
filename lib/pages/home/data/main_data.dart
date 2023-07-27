@@ -9,8 +9,9 @@ class ItemRepository{
   Future<List<ItemModel>> getItems () async {
     Response response = await post(Uri.parse(endpoint));
     if (response.statusCode==200) {
-      final List result = jsonDecode(response.body)['data'];
-      return result.map(((e)=> ItemModel.fromJson(e))).toList();
+      final List result = jsonDecode(response.body)['results'];
+      final returnValue = result.map(((e)=> ItemModel.fromJson(e))).toList();
+      return returnValue;
 
     } else {
       throw Exception(response.reasonPhrase);
