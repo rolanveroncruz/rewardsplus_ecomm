@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rewardsplus_ecomm/pages/home/data/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_body.dart';
 import 'package:rewardsplus_ecomm/utils/colors.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
@@ -6,24 +7,28 @@ import 'package:rewardsplus_ecomm/widgets/text_widgets.dart';
 
 
 class MainPageInitialized extends StatelessWidget {
-  const MainPageInitialized({super.key});
+  final List<ItemModel> items;
+  const MainPageInitialized({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
+          // Page is a column of a header and body (carousel + items)
             child: Column(children: [
               // show header
               Container(
                   child: Container(
                     //margin: EdgeInsets.only(top: 45, bottom: 15),
                       padding: const EdgeInsets.only(left: 20, right: 20),
+                      // Header is composed of a row of (column of text and a mag glass)
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            // Header
                             const Column(
                                 children: [
-                                  BigText( text: "Manila", color: AppColors.mainColor, size: 30,),
+                                  BigText( text: "Rewards Plus", color: AppColors.mainColor, size: 24,),
                                   Row(
                                     children: [
                                       SmallText(text: "Quezon City", color: Colors.black54),
@@ -32,6 +37,7 @@ class MainPageInitialized extends StatelessWidget {
                                   )
                                 ]
                             ),
+                            // Magnifying glass
                             Center(
                               child: Container(
                                 width: Dimensions.height45,
@@ -48,7 +54,7 @@ class MainPageInitialized extends StatelessWidget {
                   )
               ),
               // show body (carousel)
-              const Expanded(child: SingleChildScrollView(child: PageBody()))
+              Expanded(child: SingleChildScrollView(child: PageBody(items: items,)))
             ])));
 
   }

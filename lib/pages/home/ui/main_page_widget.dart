@@ -25,10 +25,11 @@ class MainPageWidget extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
 
                   case MainInitializedState:
-                    return const MainPageInitialized();
+                    MainInitializedState theState = state as MainInitializedState;
+                    return MainPageInitialized(items: theState.items,);
 
                   default:
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(child: Text("Error"));
                 }
               })),
     );

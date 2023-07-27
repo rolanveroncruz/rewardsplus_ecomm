@@ -1,59 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:rewardsplus_ecomm/widgets/icon_and_text_widget.dart';
+import 'package:intl/intl.dart';
+import 'package:rewardsplus_ecomm/pages/home/data/item_model.dart';
 import 'package:rewardsplus_ecomm/widgets/text_widgets.dart';
 
-import '../utils/colors.dart';
 import '../utils/dimensions.dart';
 
 class AppColumn extends StatelessWidget {
-  final String text;
-
-  const AppColumn({super.key, required this.text});
+  final ItemModel item;
+  final oCcy = NumberFormat("#,##0.00", "en_US");
+  AppColumn({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
+    //
+    // This Column is the column of text and icons in the white box.
+    // Its children are:
+    // BigText for the name,
+    // SizedBox for space
+    // Row for stars and comments
+    // SizedBox for space
+    // Row for Icons
     return Column(
       //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BigText(text: text, size: Dimensions.font26),
+        BigText(text: item.name, size: Dimensions.font26),
         SizedBox(height: Dimensions.height10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // stars
-            Wrap(
-              children: List.generate(
-                  5,
-                  (index) => Icon(Icons.star,
-                      color: AppColors.mainColor, size: Dimensions.iconSize24)),
-            ),
-            const SmallText(text: "4.5"),
-            const SmallText(text: "1287"),
-            const SmallText(text: "comments")
-          ],
-        ),
+        SmallText(text: item.description),
         SizedBox(
           height: Dimensions.height20,
         ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconAndTextWidget(
-                icon: Icons.circle_sharp,
-                text: "Normal",
-                iconColor: AppColors.iconColor1),
-            IconAndTextWidget(
-                icon: Icons.location_on,
-                text: "1.7km",
-                iconColor: AppColors.mainColor),
-            IconAndTextWidget(
-                icon: Icons.access_time_rounded,
-                text: "32min",
-                iconColor: AppColors.iconColor2)
-          ],
-        )
+        BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red )
       ],
     );
   }

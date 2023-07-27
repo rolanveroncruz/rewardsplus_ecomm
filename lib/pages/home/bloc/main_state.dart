@@ -7,6 +7,8 @@ class MainInitializingState extends MainState {
   @override
   List<Object?> get props => [];
 }
+
+
 class MainInitializedState extends MainState {
   final List<ItemModel> items;
 
