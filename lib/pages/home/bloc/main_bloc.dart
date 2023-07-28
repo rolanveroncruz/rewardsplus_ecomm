@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rewardsplus_ecomm/pages/home/data/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/data/main_data.dart';
 
@@ -16,10 +16,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   }
 
   FutureOr<void> mainInitialEvent(MainInitialEvent event, Emitter<MainState> emit) async {
-    print("emitting initializing state");
     emit(MainInitializingState());
     List<ItemModel> items = await itemRepository.getItems();
-    print("emitting initialized state");
     emit(MainInitializedState(items: items));
   }
 }

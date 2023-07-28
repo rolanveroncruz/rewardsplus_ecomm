@@ -44,9 +44,10 @@ class _PageBodyState extends State<PageBody> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      //
-      // carousel section. this has a height defined.
-      //
+      /*
+        carousel section.
+       this has a height defined.
+      */
       Container(
           height: Dimensions.pageViewHeight,
           child: PageView.builder(
@@ -82,7 +83,7 @@ class _PageBodyState extends State<PageBody> {
       Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            const BigText(text: "Popular"),
+            const BigText(text: "Popular Grocery Items"),
             SizedBox(width: Dimensions.width10),
             Container(
                 margin: const EdgeInsets.only(bottom: 3),
@@ -94,10 +95,11 @@ class _PageBodyState extends State<PageBody> {
             Container(
               margin: const EdgeInsets.only(bottom: 2),
               child: const SmallText(
-                text: "Food pairing",
+                text: "Great deals!",
               ),
             )
           ])),
+      SizedBox(height: Dimensions.height10,),
       //
       // List of images
       //
@@ -107,9 +109,9 @@ class _PageBodyState extends State<PageBody> {
         itemCount: widget.items.length,
         itemBuilder: (context, index) {
           ItemModel item = widget.items[index];
-          //
+          /*
           // Each item is Container with child: Row.
-          //
+          */
           return Container(
               margin: EdgeInsets.only(
                   left: Dimensions.width20,
@@ -149,11 +151,16 @@ class _PageBodyState extends State<PageBody> {
                               children: [
                                 BigText(
                                     text: item.name),
-                                SizedBox(height: Dimensions.height10),
+                                //SizedBox(height: Dimensions.height10),
                                 SmallText(
                                     text: item.description),
-                                SizedBox(height: Dimensions.height10),
-                                BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red )
+                                //SizedBox(height: Dimensions.height10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red ),
+                                    IconButton(onPressed: (){}, icon: const Icon(Icons.add_circle, color: Colors.blueAccent,size:40)),
+                                ],)
                               ],
                             ))),
                   )

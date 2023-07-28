@@ -21,16 +21,21 @@ class AppColumn extends StatelessWidget {
     // SizedBox for space
     // Row for Icons
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BigText(text: item.name, size: Dimensions.font26),
-        SizedBox(height: Dimensions.height10),
+        //SizedBox(height: Dimensions.height10),
         SmallText(text: item.description),
-        SizedBox(
-          height: Dimensions.height20,
+        //SizedBox( height: Dimensions.height20, ),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+                BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red ),
+                IconButton(onPressed: (){}, icon: const Icon(Icons.add_circle, color: Colors.blueAccent,size:40)),
+            ]),
         ),
-        BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red )
       ],
     );
   }
