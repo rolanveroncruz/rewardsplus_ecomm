@@ -1,16 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:rewardsplus_ecomm/data/item_model.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
 import 'package:rewardsplus_ecomm/widgets/expandable_text_widget.dart';
 
-import '../../utils/colors.dart';
-import '../../widgets/app_column.dart';
-import '../../widgets/app_icon.dart';
-import '../../widgets/text_widgets.dart';
+import '../../../utils/colors.dart';
+import '../../../widgets/app_icon.dart';
+import '../../../widgets/text_widgets.dart';
 
-class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({super.key});
+class ItemDetail extends StatelessWidget {
+  final ItemModel item;
+  final oCcy = NumberFormat("#,##0.00", "en_US");
+  ItemDetail({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class PopularFoodDetail extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("assets/image/food0.png"))),
+                          image: NetworkImage(item.media))),
                 )),
             // icon widgets
             Positioned(
@@ -37,9 +40,13 @@ class PopularFoodDetail extends StatelessWidget {
                 right: Dimensions.width20,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    AppIcon(icon: Icons.arrow_back_ios),
-                    AppIcon(icon: Icons.shopping_cart_outlined)
+                  children:  [
+                    AppIcon(icon: Icons.arrow_back_ios,onClick: (){
+                        Navigator.of(context).pop();
+
+                    }),
+                    AppIcon(icon: Icons.shopping_cart_outlined, onClick:(){} )
+
                   ],
                 )),
             // Introduction of food
@@ -62,17 +69,16 @@ class PopularFoodDetail extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppColumn(text: "Chinese Side"),
+                        //AppColumn(item: item,),
                         SizedBox(
                           height: Dimensions.height20,
                         ),
-                        BigText(text: "Introduce"),
+                        BigText(text: item.name),
                         SizedBox(height: Dimensions.height20),
                         Expanded(
                           child: SingleChildScrollView(
                             child: ExpandableTextWidget(
-                                text:
-                                    "Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice  Chicken marinated in a spiced yogurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then par boiled lightly spiced rice "),
+                                text: item.longDescription ),
                           ),
                         )
                       ],
@@ -129,7 +135,7 @@ class PopularFoodDetail extends StatelessWidget {
                             BorderRadius.circular(Dimensions.radius20),
                         color: AppColors.mainColor),
                     child: BigText(
-                      text: "\$10 | Add to cart",
+                      text: "\u20B1 ${oCcy.format(item.price)} | Add to cart",
                       color: Colors.white,
                     ))
               ],

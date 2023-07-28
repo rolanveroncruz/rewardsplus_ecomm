@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rewardsplus_ecomm/pages/home/data/item_model.dart';
+import 'package:rewardsplus_ecomm/data/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_body.dart';
 import 'package:rewardsplus_ecomm/utils/colors.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';

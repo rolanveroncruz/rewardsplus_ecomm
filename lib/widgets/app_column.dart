@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:rewardsplus_ecomm/pages/home/data/item_model.dart';
+import 'package:rewardsplus_ecomm/data/item_model.dart';
+import 'package:rewardsplus_ecomm/pages/home/bloc/main_bloc.dart';
 import 'package:rewardsplus_ecomm/widgets/text_widgets.dart';
 
 import '../utils/dimensions.dart';
@@ -33,7 +35,9 @@ class AppColumn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
                 BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red ),
-                IconButton(onPressed: (){}, icon: const Icon(Icons.add_circle, color: Colors.blueAccent,size:40)),
+                IconButton(onPressed: (){
+                  BlocProvider.of<MainBloc>(context).add(MainAddToCartEvent(item));
+                }, icon: const Icon(Icons.add_circle, color: Colors.blueAccent,size:40)),
             ]),
         ),
       ],
