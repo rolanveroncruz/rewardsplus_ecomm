@@ -7,7 +7,6 @@ import 'package:rewardsplus_ecomm/widgets/expandable_text_widget.dart';
 import '../../utils/colors.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/app_icon.dart';
-import '../../widgets/icon_and_text_widget.dart';
 import '../../widgets/text_widgets.dart';
 
 class PopularFoodDetail extends StatelessWidget {
