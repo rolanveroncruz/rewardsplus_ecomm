@@ -4,6 +4,7 @@ import 'package:rewardsplus_ecomm/data/data_repository.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/item_detail.dart';
 import 'package:rewardsplus_ecomm/pages/home/bloc/main_bloc.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_initialized.dart';
+import 'package:rewardsplus_ecomm/pages/loading_screen.dart';
 
 
 class MainPageWidget extends StatelessWidget {
@@ -36,7 +37,7 @@ class MainPageWidget extends StatelessWidget {
             builder: (BuildContext context, state) {
               switch (state.runtimeType) {
                 case MainInitializingState:
-                  return const Center(child: CircularProgressIndicator());
+                  return const LoadingScreen();
 
                 case MainInitializedState:
                   MainInitializedState theState = state as MainInitializedState;
