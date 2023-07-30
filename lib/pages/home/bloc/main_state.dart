@@ -23,7 +23,11 @@ class MainItemDetailState extends MainState{
   MainItemDetailState({required this.item});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [item];
+}
+
+class MainNullState extends MainState{
+  @override
+  List<Object?> get props => [];
 
 }

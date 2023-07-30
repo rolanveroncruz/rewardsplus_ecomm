@@ -19,4 +19,9 @@ class MainItemDetailEvent extends MainEvent{
 
 }
 
+class MainNullEvent extends MainEvent{
+  @override
+  List<Object?> get props => [];
+}
+
 

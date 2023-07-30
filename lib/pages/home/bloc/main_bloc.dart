@@ -14,6 +14,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc({required this.dataRepository}) : super(MainInitializingState()) {
     on<MainInitialEvent>(mainInitialEvent);
     on<MainItemDetailEvent>(mainItemDetailEvent);
+    on<MainNullEvent>(mainNullEvent);
   }
 
   FutureOr<void> mainInitialEvent(MainInitialEvent event, Emitter<MainState> emit) async {
@@ -25,5 +26,9 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   FutureOr<void> mainItemDetailEvent(MainItemDetailEvent event, Emitter<MainState> emit) async{
     final item = event.item;
     emit(MainItemDetailState(item:item));
+  }
+
+  FutureOr<void> mainNullEvent(MainNullEvent event, Emitter<MainState> emit) {
+    emit(MainNullState());
   }
 }
