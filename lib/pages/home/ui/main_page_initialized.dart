@@ -45,8 +45,13 @@ class MainPageInitialized extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(Dimensions.radius15),
                                     color: AppColors.mainColor),
-                                child: Icon(Icons.search,
-                                    color: Colors.white, size: Dimensions.iconSize24),
+                                child: Badge.count(
+                                  count:0,
+                                  child: IconButton(
+                                    icon: const Icon(Icons.shopping_cart_outlined),
+                                    color: Colors.white,
+                                    onPressed: () {  },),
+                                ),
                               ),
                             )
                           ]

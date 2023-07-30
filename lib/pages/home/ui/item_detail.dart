@@ -5,8 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:rewardsplus_ecomm/data/item_model.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
 import 'package:rewardsplus_ecomm/widgets/expandable_text_widget.dart';
-
-import '../../../utils/colors.dart';
 import '../../../widgets/app_icon.dart';
 import '../../../widgets/text_widgets.dart';
 
@@ -45,7 +43,9 @@ class ItemDetail extends StatelessWidget {
                         Navigator.of(context).pop();
 
                     }),
-                    AppIcon(icon: Icons.shopping_cart_outlined, onClick:(){} )
+                    Badge.count(
+                        count: 0,
+                        child: AppIcon(icon: Icons.shopping_cart_outlined, onClick:(){} ))
 
                   ],
                 )),
@@ -85,6 +85,10 @@ class ItemDetail extends StatelessWidget {
                     )))
           ],
         ),
+        /*
+        This is the bottom part which has the quantity controller and the
+        add to cart button.
+         */
         bottomNavigationBar: Container(
             height: Dimensions.bottomHeightBar,
             padding: EdgeInsets.only(
@@ -93,7 +97,7 @@ class ItemDetail extends StatelessWidget {
                 left: Dimensions.width20,
                 right: Dimensions.width20),
             decoration: BoxDecoration(
-                color: AppColors.buttonBackgroundColor,
+                color: Colors.grey.shade200,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(Dimensions.radius20 * 2),
                     topRight: Radius.circular(Dimensions.radius20 * 2))),
@@ -102,26 +106,28 @@ class ItemDetail extends StatelessWidget {
               children: [
                 Container(
                     padding: EdgeInsets.only(
-                        top: Dimensions.height20,
-                        bottom: Dimensions.height20,
-                        left: Dimensions.width20,
-                        right: Dimensions.width20),
+                        top: Dimensions.height10,
+                        bottom: Dimensions.height10,
+                        left: Dimensions.width05,
+                        right: Dimensions.width05),
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(Dimensions.radius20),
                         color: Colors.white),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.remove,
-                          color: AppColors.signColor,
+                        IconButton(
+                          icon: Icon(Icons.remove),
+                          color: Colors.blueAccent,
+                          onPressed: (){},
                         ),
-                        SizedBox(width: Dimensions.width10 / 2),
                         BigText(
                           text: "0",
                         ),
-                        SizedBox(width: Dimensions.width10 / 2),
-                        Icon(Icons.add, color: AppColors.signColor)
+                        IconButton(
+                            icon:Icon(Icons.add),
+                            color: Colors.blueAccent,
+                            onPressed: (){},)
                       ],
                     )),
                 Container(
@@ -133,7 +139,7 @@ class ItemDetail extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(Dimensions.radius20),
-                        color: AppColors.mainColor),
+                        color: Colors.blueAccent),
                     child: BigText(
                       text: "\u20B1 ${oCcy.format(item.price)} | Add to cart",
                       color: Colors.white,
