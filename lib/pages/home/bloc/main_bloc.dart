@@ -13,7 +13,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   final DataRepository dataRepository;
   MainBloc({required this.dataRepository}) : super(MainInitializingState()) {
     on<MainInitialEvent>(mainInitialEvent);
-    on<MainAddToCartEvent>(mainAddToCartEvent);
+    on<MainItemDetailEvent>(mainItemDetailEvent);
   }
 
   FutureOr<void> mainInitialEvent(MainInitialEvent event, Emitter<MainState> emit) async {
@@ -22,8 +22,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     emit(MainInitializedState(items: items));
   }
 
-  FutureOr<void> mainAddToCartEvent(MainAddToCartEvent event, Emitter<MainState> emit) async{
+  FutureOr<void> mainItemDetailEvent(MainItemDetailEvent event, Emitter<MainState> emit) async{
     final item = event.item;
-    emit(MainAddedToCartState(item:item));
+    emit(MainItemDetailState(item:item));
   }
 }

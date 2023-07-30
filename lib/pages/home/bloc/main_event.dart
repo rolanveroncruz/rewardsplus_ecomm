@@ -9,13 +9,14 @@ class MainInitialEvent extends MainEvent{
 
 }
 
-class MainAddToCartEvent extends MainEvent{
+class MainItemDetailEvent extends MainEvent{
   final ItemModel item;
 
-  MainAddToCartEvent(this.item);
+  MainItemDetailEvent(this.item);
 
   @override
   List<Object?> get props => [];
 
 }
+
 

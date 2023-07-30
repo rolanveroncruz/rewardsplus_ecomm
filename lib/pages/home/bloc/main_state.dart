@@ -17,10 +17,10 @@ class MainInitializedState extends MainState {
   List<Object?> get props => [items];
 }
 
-class MainAddedToCartState extends MainState{
+class MainItemDetailState extends MainState{
   final ItemModel item;
 
-  MainAddedToCartState({required this.item});
+  MainItemDetailState({required this.item});
 
   @override
   // TODO: implement props

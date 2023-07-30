@@ -22,17 +22,18 @@ class MainPageWidget extends StatelessWidget {
           },
         child: BlocConsumer<MainBloc, MainState>(
             listenWhen: (previousState, currentState){
-              return currentState.runtimeType == MainAddedToCartState;
+              return currentState.runtimeType == MainItemDetailState;
             },
             listener: (BuildContext context, Object? state) {
-              if (state.runtimeType == MainAddedToCartState){
-                var theState = state as MainAddedToCartState;
+              if (state.runtimeType == MainItemDetailState){
+                var theState = state as MainItemDetailState;
                 var item = theState.item;
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ItemDetail(item: item)));
+                var mainBloc = BlocProvider.of<MainBloc>(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ItemDetail(item: item, mainBloc: mainBloc)));
               }
             },
             buildWhen: (MainState previousState, MainState currentState){
-              return (previousState != currentState && currentState.runtimeType != MainAddedToCartState);
+              return (previousState != currentState && currentState.runtimeType != MainItemDetailState);
             },
             builder: (BuildContext context, state) {
               switch (state.runtimeType) {

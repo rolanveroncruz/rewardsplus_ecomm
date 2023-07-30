@@ -36,7 +36,7 @@ class AppColumn extends StatelessWidget {
             children: [
                 BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red ),
                 IconButton(onPressed: (){
-                  BlocProvider.of<MainBloc>(context).add(MainAddToCartEvent(item));
+                  BlocProvider.of<MainBloc>(context).add(MainItemDetailEvent(item));
                 }, icon: const Icon(Icons.add_circle, color: Colors.blueAccent,size:40)),
             ]),
         ),
