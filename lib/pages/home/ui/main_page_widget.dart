@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rewardsplus_ecomm/data/main_data.dart';
+import 'package:rewardsplus_ecomm/data/data_repository.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/item_detail.dart';
 import 'package:rewardsplus_ecomm/pages/home/bloc/main_bloc.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_initialized.dart';
@@ -12,12 +12,12 @@ class MainPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider<ItemRepository> (
-      create: (context) => ItemRepository(),
+    return RepositoryProvider<DataRepository> (
+      create: (context) => DataRepository(),
       child: BlocProvider<MainBloc>(
         create: (BuildContext context) {
-          ItemRepository itemRepository = RepositoryProvider.of<ItemRepository>(context);
-            return MainBloc(itemRepository: itemRepository)..add(MainInitialEvent());
+          DataRepository dataRepository = RepositoryProvider.of<DataRepository>(context);
+            return MainBloc(dataRepository: dataRepository)..add(MainInitialEvent());
           },
         child: BlocConsumer<MainBloc, MainState>(
             listenWhen: (previousState, currentState){
