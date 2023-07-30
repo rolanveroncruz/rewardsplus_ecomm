@@ -7,8 +7,8 @@ import 'package:rewardsplus_ecomm/data/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/bloc/main_bloc.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
 import 'package:rewardsplus_ecomm/widgets/expandable_text_widget.dart';
-import '../../../widgets/app_icon.dart';
-import '../../../widgets/text_widgets.dart';
+import '../../widgets/app_icon.dart';
+import '../../widgets/text_widgets.dart';
 
 class ItemDetail extends StatelessWidget {
   final ItemModel item;
