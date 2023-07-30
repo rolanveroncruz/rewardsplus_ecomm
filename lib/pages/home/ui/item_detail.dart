@@ -46,6 +46,7 @@ class ItemDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       AppIcon(icon: Icons.arrow_back_ios, onClick: () {
+                        mainBloc.add(MainNullEvent());
                         Navigator.of(context).pop();
                       }),
                       Badge.count(

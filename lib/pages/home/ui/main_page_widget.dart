@@ -22,7 +22,8 @@ class MainPageWidget extends StatelessWidget {
           },
         child: BlocConsumer<MainBloc, MainState>(
             listenWhen: (previousState, currentState){
-              return currentState.runtimeType == MainItemDetailState;
+              return (currentState.runtimeType == MainItemDetailState) ||
+                  (currentState.runtimeType == MainNullEvent);
             },
             listener: (BuildContext context, Object? state) {
               if (state.runtimeType == MainItemDetailState){
@@ -33,7 +34,9 @@ class MainPageWidget extends StatelessWidget {
               }
             },
             buildWhen: (MainState previousState, MainState currentState){
-              return (previousState != currentState && currentState.runtimeType != MainItemDetailState);
+              return (previousState != currentState) &&
+                  (currentState.runtimeType != MainItemDetailState) &&
+                  (currentState.runtimeType != MainNullState);
             },
             builder: (BuildContext context, state) {
               switch (state.runtimeType) {
