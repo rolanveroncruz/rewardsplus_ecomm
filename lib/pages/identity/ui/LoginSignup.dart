@@ -18,7 +18,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: MyMainBottomNav(),
+        bottomNavigationBar: MyMainBottomNav(currentTabIndex: 1,),
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(

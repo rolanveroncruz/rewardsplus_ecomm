@@ -5,18 +5,21 @@ import '../pages/identity/identity_view.dart';
 
 // ignore: must_be_mutable
 class MyMainBottomNav extends StatefulWidget {
-  int currentTabIndex = 0;
-  MyMainBottomNav({super.key, currentTabIndex});
+  final int currentTabIndex;
+  const MyMainBottomNav({super.key, required this.currentTabIndex });
 
   @override
-  State<MyMainBottomNav> createState() => _MyMainBottomNavState();
+  State<MyMainBottomNav> createState() => _MyMainBottomNavState(currentTabIndex);
 }
 
 class _MyMainBottomNavState extends State<MyMainBottomNav> {
+  int currentTabIndex;
+  _MyMainBottomNavState(this.currentTabIndex);
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: widget.currentTabIndex,
+      currentIndex: currentTabIndex,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
@@ -27,9 +30,9 @@ class _MyMainBottomNavState extends State<MyMainBottomNav> {
 
   void navigate(int tabIndex){
     setState(() {
-      widget.currentTabIndex = tabIndex;
+      currentTabIndex = tabIndex;
     });
-    switch(widget.currentTabIndex){
+    switch(currentTabIndex){
       case 0:
         Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>const MainPageWidget()));
         break;

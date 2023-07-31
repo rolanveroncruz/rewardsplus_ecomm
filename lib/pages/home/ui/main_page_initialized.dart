@@ -16,7 +16,6 @@ class MainPageInitialized extends StatefulWidget {
 }
 
 class _MainPageInitializedState extends State<MainPageInitialized> {
-  int currentTabIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +67,7 @@ class _MainPageInitializedState extends State<MainPageInitialized> {
               // show body (carousel)
               Expanded(child: SingleChildScrollView(child: PageBody(items: widget.items,)))
             ])),
-        bottomNavigationBar: MyMainBottomNav());
+        bottomNavigationBar: MyMainBottomNav(currentTabIndex: 0,));
 
   }
 
