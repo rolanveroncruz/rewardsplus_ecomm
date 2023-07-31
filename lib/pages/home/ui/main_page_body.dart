@@ -163,7 +163,7 @@ class _PageBodyState extends State<PageBody> {
                                     BigText(text: "\u20B1 ${oCcy.format(item.price)}", size: Dimensions.font16, color: Colors.red ),
                                     IconButton(onPressed: (){
                                       BlocProvider.of<MainBloc>(context).add(MainItemDetailEvent(item));
-                                    }, icon: const Icon(Icons.add_circle, color: Colors.blueAccent,size:40)),
+                                    }, icon: const Icon(Icons.arrow_forward_ios_rounded, color: Colors.blueAccent,size:40)),
                                 ],)
                               ],
                             ))),

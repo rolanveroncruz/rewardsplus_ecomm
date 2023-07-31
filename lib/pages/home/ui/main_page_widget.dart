@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rewardsplus_ecomm/data/data_repository.dart';
-import 'package:rewardsplus_ecomm/pages/item_detail_and_shopping_cart/item_detail.dart';
 import 'package:rewardsplus_ecomm/pages/home/bloc/main_bloc.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_initialized.dart';
+import 'package:rewardsplus_ecomm/pages/item_detail/item_view.dart';
 import 'package:rewardsplus_ecomm/pages/loading_screen.dart';
 
 
@@ -30,7 +30,7 @@ class MainPageWidget extends StatelessWidget {
                 var theState = state as MainItemDetailState;
                 var item = theState.item;
                 var mainBloc = BlocProvider.of<MainBloc>(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ItemDetail(item: item, mainBloc: mainBloc)));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ItemDetailPage(item: item, mainBloc: mainBloc)));
               }
             },
             buildWhen: (MainState previousState, MainState currentState){
