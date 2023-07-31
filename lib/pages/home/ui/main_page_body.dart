@@ -4,7 +4,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:rewardsplus_ecomm/data/item_model.dart';
+import 'package:rewardsplus_ecomm/data/models/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/bloc/main_bloc.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
 import 'package:rewardsplus_ecomm/widgets/text_widgets.dart';

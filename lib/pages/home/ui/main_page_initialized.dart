@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rewardsplus_ecomm/data/item_model.dart';
+import 'package:rewardsplus_ecomm/data/models/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_body.dart';
 import 'package:rewardsplus_ecomm/utils/colors.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
@@ -60,7 +60,14 @@ class MainPageInitialized extends StatelessWidget {
               ),
               // show body (carousel)
               Expanded(child: SingleChildScrollView(child: PageBody(items: items,)))
-            ])));
+            ])),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+
+          ],
+        ),);
 
   }
 }

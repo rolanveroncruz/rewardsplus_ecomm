@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rewardsplus_ecomm/data/item_model.dart';
+import 'package:rewardsplus_ecomm/data/models/item_model.dart';
 import 'package:rewardsplus_ecomm/data/data_repository.dart';
 
 part 'main_event.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:rewardsplus_ecomm/data/item_model.dart';
+import 'package:rewardsplus_ecomm/data/models/item_model.dart';
 
 import 'data_repository.dart';
 
