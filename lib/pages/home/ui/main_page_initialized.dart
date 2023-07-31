@@ -3,13 +3,20 @@ import 'package:rewardsplus_ecomm/data/models/item_model.dart';
 import 'package:rewardsplus_ecomm/pages/home/ui/main_page_body.dart';
 import 'package:rewardsplus_ecomm/utils/colors.dart';
 import 'package:rewardsplus_ecomm/utils/dimensions.dart';
+import 'package:rewardsplus_ecomm/widgets/bottomnav.dart';
 import 'package:rewardsplus_ecomm/widgets/text_widgets.dart';
 
 
-class MainPageInitialized extends StatelessWidget {
+class MainPageInitialized extends StatefulWidget {
   final List<ItemModel> items;
   const MainPageInitialized({super.key, required this.items});
 
+  @override
+  State<MainPageInitialized> createState() => _MainPageInitializedState();
+}
+
+class _MainPageInitializedState extends State<MainPageInitialized> {
+  int currentTabIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,15 +66,10 @@ class MainPageInitialized extends StatelessWidget {
                   )
               ),
               // show body (carousel)
-              Expanded(child: SingleChildScrollView(child: PageBody(items: items,)))
+              Expanded(child: SingleChildScrollView(child: PageBody(items: widget.items,)))
             ])),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-
-          ],
-        ),);
+        bottomNavigationBar: MyMainBottomNav());
 
   }
+
 }

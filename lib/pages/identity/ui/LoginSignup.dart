@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:rewardsplus_ecomm/widgets/bottomnav.dart';
 import 'package:rewardsplus_ecomm/widgets/my_button.dart';
 import 'package:rewardsplus_ecomm/widgets/my_textfield.dart';
 
@@ -17,6 +18,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: MyMainBottomNav(),
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
@@ -93,4 +95,5 @@ class _LoginSignUpState extends State<LoginSignUp> {
   void signUserIn(){
 
   }
+
 }
