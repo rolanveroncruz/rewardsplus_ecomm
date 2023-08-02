@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatefulWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final controller;
+  final TextEditingController controller;
   final String hintText;
   final int maxLines;
-  final bool obscureText;
+  final bool forPassword;
 
   const MyTextField(
       {super.key,
       required this.controller,
       required this.hintText,
-      required this.obscureText,
-      this.maxLines = 1});
+      required this.forPassword,
+      this.maxLines = 1, });
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -20,6 +19,14 @@ class MyTextField extends StatefulWidget {
 
 class _MyTextFieldState extends State<MyTextField> {
   bool isSuffixIconVisible = false;
+  bool obscureText = false;
+
+  @override
+  initState(){
+    obscureText = widget.forPassword;
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +44,9 @@ class _MyTextFieldState extends State<MyTextField> {
                 : isSuffixIconVisible = false);
           },
           controller: widget.controller,
-          obscureText: widget.obscureText,
+          obscureText: obscureText,
           decoration: InputDecoration(
-            suffixIcon: isSuffixIconVisible
-                ? IconButton(
-                    onPressed: widget.controller.clear,
-                    icon: const Icon(Icons.clear),
-                  )
-                : null,
+            suffixIcon: widget.forPassword? iconForPasswordVisibility(): iconForReset(),
             enabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.circular(12)),
@@ -61,5 +63,27 @@ class _MyTextFieldState extends State<MyTextField> {
         ),
       ),
     );
+  }
+
+  IconButton? iconForPasswordVisibility(){
+    return obscureText? IconButton(
+              icon: const Icon( Icons.visibility_off),
+              onPressed:() { setState(() {
+                obscureText = !obscureText;
+              });}):
+            IconButton(
+              icon: const Icon(Icons.visibility),
+              onPressed: (){ setState(() {
+                obscureText = !obscureText;
+              });});
+  }
+
+  IconButton? iconForReset(){
+    return  isSuffixIconVisible? IconButton(
+      onPressed: widget.controller.clear,
+      icon: const Icon(Icons.clear),
+    )
+    : null;
+
   }
 }

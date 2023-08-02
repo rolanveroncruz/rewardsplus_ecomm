@@ -1,11 +1,15 @@
 class User{
   int? id;
   final String uuid;
-  String? email_or_phone;
+  String? emailOrPhone;
   String? name;
 
-  User({required this.uuid});
+  User({this.id, this.emailOrPhone, required this.uuid, this.name});
   factory User.fromJson(Map<String, dynamic>json){
-    return User(uuid: json['uuid']);
+    return User(
+        id: json['id'],
+        emailOrPhone:json['email'],
+        uuid: json['uuid'],
+        name: json['name']);
   }
 }

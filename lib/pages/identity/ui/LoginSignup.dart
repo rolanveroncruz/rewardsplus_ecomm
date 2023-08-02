@@ -1,40 +1,40 @@
 
 import 'package:flutter/material.dart';
+import 'package:rewardsplus_ecomm/data/user_data_repository.dart';
+import 'package:rewardsplus_ecomm/pages/identity/identity_bloc.dart';
+import 'package:rewardsplus_ecomm/pages/identity/identity_event.dart';
 import 'package:rewardsplus_ecomm/widgets/bottomnav.dart';
 import 'package:rewardsplus_ecomm/widgets/my_button.dart';
 import 'package:rewardsplus_ecomm/widgets/my_textfield.dart';
 
 class LoginSignUp extends StatefulWidget {
-  const LoginSignUp({super.key});
+  final UserDataRepository userDataRepository;
+  final IdentityBloc identityBloc;
+  const LoginSignUp({super.key, required this.userDataRepository, required this.identityBloc});
 
   @override
   State<LoginSignUp> createState() => _LoginSignUpState();
 }
 
 class _LoginSignUpState extends State<LoginSignUp> {
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: MyMainBottomNav(currentTabIndex: 1,),
+        bottomNavigationBar: const MyMainBottomNav(currentTabIndex: 1,),
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Icon(Icons.lock, size: 100),
+                  const Icon(Icons.shopping_cart, size: 100),
                   const SizedBox(
                     height: 20,
                   ),
-                  // Hello again!
-                  // Text(
-                  //   'Hello Again!',
-                  //   style: GoogleFonts.bebasNeue(fontSize: 52),
-                  // ),
                   const Text("Welcome back, you've been missed!",
                       style: TextStyle(
                         fontSize: 20,
@@ -42,12 +42,11 @@ class _LoginSignUpState extends State<LoginSignUp> {
                   const SizedBox(
                     height: 50,
                   ),
-                  // email textfield
 
                   MyTextField(
-                    controller: usernameController,
-                    hintText: 'Username',
-                    obscureText: false,
+                    controller: emailController,
+                    hintText: 'Email',
+                    forPassword: false,
                   ),
                   const SizedBox(height: 10),
 
@@ -55,7 +54,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                   MyTextField(
                     controller: passwordController,
                     hintText: 'Password',
-                    obscureText: true,
+                    forPassword: true,
                   ),
                   const SizedBox(height: 15),
                   const Padding(
@@ -64,7 +63,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          "Forgot Possword?",
+                          "Forgot Password?",
                           style: TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                         )
@@ -93,7 +92,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
   }
 
   void signUserIn(){
-
+   widget.identityBloc.add(IdentitySigningInEvent(emailController.text, passwordController.text));
   }
 
 }
